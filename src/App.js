@@ -86,16 +86,6 @@ class App extends React.Component {
         req.send(body);
     }
 
-    SyncScroll(){
-        const originalView = document.getElementById('originalview');
-        const ogmaView = document.getElementById('ogmaview');
-        const acsView = document.getElementById('acsview');
-        if (originalView != null && ogmaView != null && acsView != null) {
-            ogmaView.scrollTop = originalView.scrollTop;
-            acsView.scrollTop = originalView.scrollTop;
-        }
-    }
-
     render() {
         const ogmaLatency = this.state.ogmaEndTime > 0 ? "Latency: " + Number(this.state.ogmaEndTime - this.state.ogmaStartTime).toFixed(2) + " ms" : ""
         const acsLatency = this.state.acsEndTime > 0 ? "Latency: " + Number(this.state.acsEndTime - this.state.acsStartTime).toFixed(2) + " ms" : ""
