@@ -1,0 +1,66 @@
+.mybutton {
+  display: flex;
+  cursor: pointer;
+  color: rgb(42, 42, 211);
+}
+
+.mybutton:hover {
+  background-color: rgb(236, 235, 235)
+}
+
+.tl { position: absolute; top: 0; left: 0; right: 50%; bottom: 50%; background: white; border:solid #000; border-width: 0 5px 5px 0; }
+.tr { position: absolute; top: 0; left: 50%; right: 0; bottom: 50%; background: white; border:solid #000; border-width: 0 0 5px 0; }
+.bl { position: absolute; top: 50%; left: 0; right: 50%; bottom: 0; background: white; border:solid #000; border-width: 0 5px 0 0; }
+.br { position: absolute; top: 50%; left: 50%; right: 0; bottom: 0; background: white; } 
+
+.flow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.froutput {
+  padding: 10px;
+  flex: 1;
+  overflow: auto;
+}
+
+.frsource {
+  padding: 10px;
+  flex: 1;
+}
+
+.frtoken {
+  padding: 10px;
+  height: 50px;
+}
+
+.frlang {
+  padding: 10px;
+  height: 25px;
+}
+
+.labelcontainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-inline-start: 10px;
+  color: black;
+  background-color: lightgrey;
+  border:solid #000;
+  border-width: 2px 0 2px 0;
+}
+
+.label {
+  display: flex;
+  padding-inline-start: 10px;
+}
+
+.mytextarea{
+  resize: none;
+  border: 1px solid line;
+  width: 100%;
+  height: 100%;
+}
