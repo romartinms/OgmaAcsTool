@@ -111,9 +111,8 @@ class App extends React.Component {
                         <textarea className='mytextarea' 
                                 onChange={e => this.setState({targetLanguage:e.target.value})}
                                 autoComplete='off'
-                                autoCorrect='off'>
-                            {deaultTargetLanguage}
-                        </textarea>
+                                autoCorrect='off'
+                                defaultValue={deaultTargetLanguage}/>
                         </div>
                     </div>
                 </div>
