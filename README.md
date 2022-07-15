@@ -1,7 +1,4 @@
 # OgmaAcsTool
-Tool for comparing OGMA and ACS
-
-# OgamAcsTool
 Tool For Comparing Ogma/Acs
 
 # Prerequisites
