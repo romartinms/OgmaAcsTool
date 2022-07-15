@@ -5,7 +5,7 @@ Tool For Comparing Ogma/Acs
 
 Node.JS
 
-Browser Plug to disable CORS https://add0n.com/access-control.html
+Browser plug-in to disable CORS: https://add0n.com/access-control.html
 
 # Setup
 
