@@ -4,19 +4,19 @@ Tool for comparing OGMA and ACS
 # OgamAcsTool
 Tool For Comparing Ogma/Acs
 
-#Prerequisites
+# Prerequisites
 
 Node.JS
 
 Browser Plug to disable CORS https://add0n.com/access-control.html
 
-#Setup
+# Setup
 
 npm install
 
 npm start
 
-#Usage
+# Usage
 
 Open http://localhost:3000 in browser
 
