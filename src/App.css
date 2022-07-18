@@ -31,6 +31,17 @@
   flex: 1;
 }
 
+.frsubject {
+  padding: 10px;
+  height: 20px;
+}
+
+.separator {
+  border: solid #000;
+  border-width: 0;
+  border-bottom-width: 2px;
+}
+
 .frtoken {
   padding: 10px;
   height: 50px;

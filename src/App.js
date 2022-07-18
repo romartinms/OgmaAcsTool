@@ -12,10 +12,13 @@ class App extends React.Component {
             token: "",
             targetLanguage: deaultTargetLanguage,
             src: "",
-            ogma: "",
+            subject: "",
+            ogmaTranslatedBody: "",
+            ogmaTranslatedSubject: "",
             ogmaStartTime: 0,
             ogmaEndTime: 0,
-            acs: "",
+            acsTranslatedBody: "",
+            acsTranslatedSubject: "",
             acsStartTime: 0,
             acsEndTime: 0
         }
@@ -40,21 +43,26 @@ class App extends React.Component {
                 }
 
                 if (req.status === 200) {
-                    const translated = JSON.parse(req.responseText)[0].TranslatedText;
+                    const translatedSubject = JSON.parse(req.responseText)[0].TranslatedText;
+                    const translatedBody = JSON.parse(req.responseText)[1].TranslatedText;
                     
-                    if (useAcs) {                        
-                        this.setState({acs:translated});
+                    if (useAcs) { 
+                        this.setState({acsTranslatedSubject:translatedSubject});
+                        this.setState({acsTranslatedBody:translatedBody})
                     } else {                        
-                        this.setState({ogma:translated});
+                        this.setState({ogmaTranslatedSubject:translatedSubject});
+                        this.setState({ogmaTranslatedBody:translatedBody});
                     }
 
                 } else {
 
                     const error = "Error " + req.status;
-                    if (useAcs) {                        
-                        this.setState({acs:error});
-                    } else {                        
-                        this.setState({ogma:error});
+                    if (useAcs) {
+                        this.setState({acsTranslatedSubject:""});                
+                        this.setState({acsTranslatedBody:error});
+                    } else {              
+                        this.setState({ogmaTranslatedSubject:""});
+                        this.setState({ogmaTranslatedBody:error});
                     }
                 }
             }
@@ -72,7 +80,7 @@ class App extends React.Component {
         req.setRequestHeader("x-translator-user-id", "10033FFF801BC6C0");
         req.setRequestHeader("useacsapi", useAcs);
       
-        const body = JSON.stringify([this.state.src]);
+        const body = JSON.stringify([this.state.subject, this.state.src]);
 
         if (useAcs)
         {
@@ -95,6 +103,11 @@ class App extends React.Component {
                 <div className='tl'>
                     <div className='flow'>
                         <div className='labelcontainer'>Original Source</div>
+                        <div className='frsubject'>
+                            <textarea className='mytextarea' 
+                                onChange={e => this.setState({subject:e.target.value})}
+                                placeholder='Paste email subject here'/>
+                        </div>
                         <div className='frsource'>    
                             <textarea className='mytextarea' 
                                 onChange={e => this.setState({src:e.target.value})}
@@ -120,6 +133,7 @@ class App extends React.Component {
                 <div className='tr'>
                     <div className='flow'>
                         <div className='labelcontainer'>Original</div>
+                        <div className='frsubject separator'>{this.state.subject}</div>
                         <ScrollSyncPane>
                             <div className='froutput'>
                                 <div dangerouslySetInnerHTML={{__html:this.state.src}}/>
@@ -138,9 +152,10 @@ class App extends React.Component {
                                 {ogmaLatency}
                             </div>
                         </div>
+                        <div className='frsubject separator'>{this.state.ogmaTranslatedSubject}</div>
                         <ScrollSyncPane>
                             <div className='froutput'>
-                                <div dangerouslySetInnerHTML={{__html:this.state.ogma}}/>
+                                <div dangerouslySetInnerHTML={{__html:this.state.ogmaTranslatedBody}}/>
                             </div>
                         </ScrollSyncPane>
                     </div>
@@ -156,9 +171,10 @@ class App extends React.Component {
                                 {acsLatency}
                             </div>
                         </div>
+                        <div className='frsubject separator'>{this.state.acsTranslatedSubject}</div>
                         <ScrollSyncPane>
                             <div id='acsview' className='froutput'>
-                                <div dangerouslySetInnerHTML={{__html:this.state.acs}}/>
+                                <div dangerouslySetInnerHTML={{__html:this.state.acsTranslatedBody}}/>
                             </div>
                         </ScrollSyncPane>
                     </div>
